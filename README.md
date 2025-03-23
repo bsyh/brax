@@ -14,8 +14,7 @@ During the early stages of reinforcement learning (RL) development, researchers 
 - **Full name**: Bruce (Shouyue) Hu
  - **Email**: hu.shouyue@outlook.com 
  - **Country**: Canada 
- - **Resume / CV**: [Link to Resume] ( replace with actual link) 
- - **Public Repository links**: [Link to GitHub Profile] ( replace with actual link) 
+ - **Resume / CV**: [Link to Resume](doc/resume_bruce_hu.pdf) 
  - **Previous contributions links**: [Real-time Blink Detection ROS Package](https://github.com/bsyh/blink_detect_live) 
  - **LinkedIn profile**: https://www.linkedin.com/in/brucesh/
 ### Project ideas proposal
