@@ -1,4 +1,7 @@
 
+Proposal to Google Summer of Code 2025\
+PAL Robotics: Brax Training Viewer for Real-Time Policy Visualization
+
 
 # Application Info
 ### Cover Letter

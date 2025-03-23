@@ -83,24 +83,3 @@ def train_ant_policy(save_path: str = 'policy/ant_policy_params', lightweight: b
 if __name__ == "__main__":
     # Train and save the policy (lightweight for testing on Apple Silicon)
     inference_fn = train_ant_policy(lightweight=True)
-
-    # Optional: Load and test the policy (uncomment if needed)
-    """
-    env = envs.create(env_name='ant', backend='positional')
-    jit_reset = jax.jit(env.reset)
-    jit_step = jax.jit(env.step)
-    jit_infer = jax.jit(inference_fn)
-
-    rng = jax.random.PRNGKey(seed=1)
-    state = jit_reset(rng=rng)
-    rollout = []
-    for _ in range(100):
-        rollout.append(state.pipeline_state)
-        act_rng, rng = jax.random.split(rng)
-        act, _ = jit_infer(state.obs, act_rng)
-        state = jit_step(state, act)
-
-    from brax.io import html
-    print("Rendering rollout...")
-    HTML(html.render(env.sys.tree_replace({'opt.timestep': env.dt}), rollout))
-    """
