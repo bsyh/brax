@@ -5,6 +5,42 @@ from mujoco import viewer
 import config
 import xml.etree.ElementTree as ET
 
+import os
+import pickle
+import jax.numpy as jnp
+
+def save_model(model_state, filename):
+    """Saves the trained model state to a file."""
+    with open(filename, 'wb') as f:
+        pickle.dump(model_state, f)
+    print(f"Model saved to {filename}")
+
+def load_model(filename):
+    """Loads a trained model state from a file."""
+    if not os.path.exists(filename):
+        raise FileNotFoundError(f"Model file {filename} not found.")
+    with open(filename, 'rb') as f:
+        model_state = pickle.load(f)
+    print(f"Model loaded from {filename}")
+    return model_state
+
+def evaluate_policy(env, model_state, num_episodes=10):
+    """Evaluates the trained policy on the given environment."""
+    total_rewards = []
+    for episode in range(num_episodes):
+        state = env.reset()
+        done = False
+        episode_reward = 0
+        while not done:
+            action = model_state.policy(state.obs)  # Get action from policy
+            state = env.step(action)
+            episode_reward += state.reward
+            done = state.done
+        total_rewards.append(episode_reward)
+    avg_reward = jnp.mean(jnp.array(total_rewards))
+    print(f"Average reward over {num_episodes} episodes: {avg_reward}")
+    return avg_reward
+
 def create_multi_robot_env(num_envs, env_separation, envs_per_row, model_path):
     """
     Creates a multi-environment MuJoCo model by replicating a robot across `num_envs` independent spaces.
