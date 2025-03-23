@@ -27,7 +27,7 @@ During the early stages of reinforcement learning (RL) development, researchers 
 | 12 | Investigate UI solutions and write design doc |
 | 30 | Customize `mujoco.viewer` for policy UI: Add overlays (reward/epoch), support agent selection, real-time plotting | 
 | 20 | Develop basic workflow with dummy policy training | 
-| 44 | Connect Brax PPO trainer to policy UI (includes initial testing) |
+| 44 | Implement synchronized MuJoCo visualization with Brax training: Extract actions from the policy network at each training step and apply them to a parallel MuJoCo simulation for real-time policy visualization (temperary policy para cache in memory or disk) |
 | 20 | Unit tests and validation: Ensure policy actions match visuals |
 | 50 | Support for parallel environments: Visualize multiple agents, enable agent selection |
 | 20 | Implement rendering toggle: Pause GPU-to-CPU transfer when disabled | 
