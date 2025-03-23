@@ -64,9 +64,9 @@ During the early stages of reinforcement learning (RL) development, researchers 
 ```
 ├── assets/ant.xml
 ├── assets/ant_policy_params	# Policy learned from train.py         
-├── config.py               	# Configuration settings for env parameters
-├── train.py               	 	# Script for training the Ant robot with reinforcement learning
-├── viewer_policy.py       	 	# Script for visualizing the learned policy
+├── config.py                   # Configuration settings for env parameters
+├── train.py                    # Script for training the Ant robot with reinforcement learning
+├── viewer_policy.py            # Script for visualizing the learned policy
 ├── viwer_random.py         	# Script for random control
 ├── README.md               	# Project documentation
 ```
