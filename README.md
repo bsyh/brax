@@ -8,7 +8,7 @@ I am Bruce Hu, an MS Robotics student in Fall 2025.
 
 During the early stages of reinforcement learning (RL) development, researchers often face the repetitive and time-consuming task of tuning hyper-parameters and analyzing training logs. This process can be inefficient, especially without real-time insights into the training progress. As such, I propose the development of a real-time policy visualization tool for Brax, which will allow researchers to observe and debug RL policies as they evolve during training. This tool will significantly reduce the time and effort required for policy development, enabling faster iteration cycles and more effective understanding in the policy black box.
 
-**I have ample commitment time in the summer and wish to maintain my open-source project in a long-term!**
+**I have ample commitment time in the summer and wish to maintain my open-source project in a long-term!** I  would like to build a tool useful for my Master's robotics study starting in September. Making it open-source is a good idea, too!
 
 ### Contact Details
 - **Full name**: Bruce (Shouyue) Hu
