@@ -7,7 +7,7 @@ PAL Robotics: Brax Training Viewer for Real-Time Policy Visualization
 ### Cover Letter
 Dear PAL Robotics Team, 
 
-I am Bruce Hu, an MS Robotics student in Fall 2025. 
+I’m Bruce, a full-time software developer in Canada and an in-coming MS robotics student. I’ve worked as a robotics research assistant (ROS) and a robotics engineer intern (robotic arm).
 
 During the early stages of reinforcement learning (RL) development, researchers often face the repetitive and time-consuming task of tuning hyper-parameters and analyzing training logs. This process can be inefficient, especially without real-time insights into the training progress. As such, I propose the development of a real-time policy visualization tool for Brax, which will allow researchers to observe and debug RL policies as they evolve during training. This tool will significantly reduce the time and effort required for policy development, enabling faster iteration cycles and more effective understanding in the policy black box.
 
