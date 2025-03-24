@@ -21,6 +21,9 @@ During the early stages of reinforcement learning (RL) development, researchers 
  - **Previous contributions links**: [Real-time Blink Detection ROS Package](https://github.com/bsyh/blink_detect_live) 
  - **LinkedIn profile**: https://www.linkedin.com/in/brucesh/
 ### Project ideas proposal
+Visulization is proposed to be implemented in MuJoCo XLA (MJX) pipeline in HTML format. Such option provides portability to difference platforms.  Considering brax and mujoco is widely used across platforms, across-platform is a prioritized requiremnt for this project. Platforms includs headless embedded linux, cloud TPU/GPU, local AMD/Nvidia GPU or Applle Silicon.
+
+Another option is Qt for multi, but
 | **Hours** | **Task** | 
 |-----------|--------------------------------------------------------------------------|
 | 24 | Familiarize with source code of JAX/Brax/Mojoco |
