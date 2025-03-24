@@ -23,7 +23,7 @@ During the early stages of reinforcement learning (RL) development, researchers 
 ### Project ideas proposal
 Visulization is proposed to be implemented in MuJoCo XLA (MJX) pipeline in HTML format. Such option provides portability to difference platforms.  Considering brax and mujoco is widely used across platforms, portability is a prioritized requiremnt for this project. The use case of brax includs but not limited to: headless embedded linux, cloud TPU/GPU, local AMD/Nvidia GPU or Applle Silicon.
 
-Another option is Qt for multi, but
+Another option is Qt for cross-platform capability. This option provides better flexability on display content and media types at the cost of an extra dependency on Qt lib.
 | **Hours** | **Task** | 
 |-----------|--------------------------------------------------------------------------|
 | 24 | Familiarize with source code of JAX/Brax/Mojoco |
