@@ -21,33 +21,42 @@ During the early stages of reinforcement learning (RL) development, researchers 
  - **Previous contributions links**: [Real-time Blink Detection ROS Package](https://github.com/bsyh/blink_detect_live) 
  - **LinkedIn profile**: https://www.linkedin.com/in/brucesh/
 ### Project ideas proposal
-Visulization is proposed to be implemented in MuJoCo XLA (MJX) pipeline in HTML format. Such option provides portability to difference platforms.  Considering brax and mujoco is widely used across platforms, portability is a prioritized requiremnt for this project. The use case of brax includs but not limited to: headless embedded linux, cloud TPU/GPU, local AMD/Nvidia GPU or Applle Silicon.
+#### Project Overview
 
-Another option is Qt for cross-platform capability. This option provides better flexability on display content and media types at the cost of an extra dependency on Qt lib.
+Visualization is proposed to be implemented in the MuJoCo XLA (MJX) pipeline in HTML format. This approach ensures portability across various platforms, a key requirement given that Brax and MuJoCo are widely used in environments such as headless embedded Linux, cloud TPU/GPU, local AMD/Nvidia GPU, and Apple Silicon.
+
+An alternative option is Qt for cross-platform capability, offering greater flexibility in display content and media types, though it introduces an additional dependency on the Qt library.
+
+#### Task Breakdown
+
+The following table outlines the updated tasks, with specific enhancements to incorporate data transfer optimization strategies for real-time visualization:
+
+
 | **Hours** | **Task** | 
 |-----------|--------------------------------------------------------------------------|
 | 24 | Familiarize with source code of JAX/Brax/Mojoco |
-| 12 | Investigate UI solutions and write design doc |
+| 12 | Investigate UI solutions and write design doc<br>- Include a section on strategies for efficient GPU-to-CPU data transfers for real-time visualization (e.g., minimizing transfers, leveraging asynchronous operations, utilizing HTML rendering). |
 | 30 | Customize `mujoco.viewer` for policy UI: Add overlays (reward/epoch), support agent selection, real-time plotting | 
 | 20 | Develop basic workflow with dummy policy training | 
-| 44 | Implement synchronized MuJoCo visualization with Brax training: Extract actions from the policy network at each training step and apply them to a parallel MuJoCo simulation for real-time policy visualization (temperary policy para cache in memory or disk) |
+| 44 | Implement synchronized MuJoCo visualization with Brax training<br>- Extract actions from the policy network at each training step and apply them to a parallel MuJoCo simulation for real-time policy visualization (temporary policy parameter cache in memory or disk).<br>- Optimization Focus: Minimize data transfers by keeping computations on the GPU and only transferring essential visualization data (e.g., metrics, states) to the CPU, using asynchronous transfers to maintain training speed. |
 | 20 | Unit tests and validation: Ensure policy actions match visuals |
 | 50 | Support for parallel environments: Visualize multiple agents, enable agent selection |
 | 20 | Implement rendering toggle: Pause GPU-to-CPU transfer when disabled | 
-| 30 | Large-scale testing: Unit tests, validation, and performance comparison |
+| 30 | Large-scale testing: Unit tests, validation, and performance comparison<br>- Include benchmarks for data transfer times and optimize the visualization pipeline based on performance metrics. |
 | 20 | Refine UI: Polish visuals and improve responsiveness |
 | 20 | Documentation: User guide with examples, API docs, installation steps |
-| 40 | *(Optional)* Optimize GPU-to-CPU data transfer for CUDA |
-| 40 | *(Optional)* Optimize GPU-to-CPU data transfer for Apple Silicon |
+| 40 | Optimize GPU-to-CPU data transfer for CUDA<br>- Focus on CUDA-specific optimizations, such as using pinned memory and asynchronous streams. |
+| 40 | *Optional* Optimize GPU-to-CPU data transfer for Apple Silicon<br>- Leverage unified memory architecture for efficient data handling. |
 | **350** | **Total** |
 
+> Apple Silicon: [MLX - A machine learning framework for Apple silicon](https://github.com/ml-explore/mlx). Lazy compute style in unified memory hardware.
 
-> **Note**: The optional optimization tasks are stretch goals aimed at enhancing performance across different hardware platforms.
-> reference: [MLX - A machine learning framework for Apple silicon](https://github.com/ml-explore/mlx)
+#### Why keeping main data on GPU?
+Since JAX and MuJoCo XLA (MJX) are designed for accelerators, keeping computations on the GPU can minimize CPU transfers, reduce code modification, and allow HTML renders using CPU synchronically (non-blocking GPU).
 
 ---
 
-### Technical and Programming Background
+### Contributor's Background
 - **Programming Skills**:  
   - 2 years of professional Python experience.  
   - Proficient in MuJoCo simulator, XML, RL training algorithms (PPO), Brax, and JAX.  
