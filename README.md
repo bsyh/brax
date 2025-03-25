@@ -73,6 +73,6 @@ Another option is Qt for cross-platform capability. This option provides better 
 ├── config.py                   # Configuration settings for env parameters
 ├── train.py                    # Script for training the Ant robot with reinforcement learning
 ├── viewer_policy.py            # Script for visualizing the learned policy
-├── viwer_random.py         	# Script for random control
+├── viewer_random.py         	# Script for random control
 ├── README.md               	# Project documentation
 ```
