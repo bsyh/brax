@@ -46,7 +46,7 @@ The following table outlines the updated tasks, with specific enhancements to in
 | 20 | Refine UI: Polish visuals and improve responsiveness |
 | 20 | Documentation: User guide with examples, API docs, installation steps |
 | 40 | Optimize GPU-to-CPU data transfer for CUDA<br>- Focus on CUDA-specific optimizations, such as using pinned memory and asynchronous streams. |
-| 40 | *Optional* Optimize GPU-to-CPU data transfer for Apple Silicon<br>- Leverage unified memory architecture for efficient data handling. |
+| 40 | *(Optionally)* Optimize GPU-to-CPU data transfer for Apple Silicon<br>- Leverage unified memory architecture for efficient data handling. |
 | **350** | **Total** |
 
 > Apple Silicon: [MLX - A machine learning framework for Apple silicon](https://github.com/ml-explore/mlx). Lazy compute style in unified memory hardware.
