@@ -48,7 +48,7 @@ The project focuses on implementing visualization in the MuJoCo XLA (MJX) pipeli
 
 #### Why main data stores in GPU?
 Since JAX and MuJoCo XLA (MJX) are designed for accelerators. The tool will peridically pull data from GPU to CPU. 
-- Maintain the training speed in GPU by reducing data trasnfer frequency.
+- Maintain GPU training speed by reducing data trasnfer frequency.
 - Let CPU handdle visualization tasks without blocking GPU.
 
 #### Why Web UI?
@@ -56,7 +56,7 @@ A web-based UI enables visualization on headless training machines or remote acc
 
 #### Web Version Details
 The web version leverages [MuJoCo-WASM](https://github.com/zalo/mujoco_wasm#), which already handles 3D visualization. The 55-hour task involves:
-- Setting up a communication channel between the Brax training process and the web server.
+- A communication channel between the Brax training process and the web server.
 - Detailed install doc for community user
 - (Optional) A cache mechanism for web.
 
