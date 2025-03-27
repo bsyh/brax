@@ -57,7 +57,7 @@ A web-based UI enables visualization on headless training machines or remote acc
 
 #### Web Version Details
 The web version leverages [MuJoCo-WASM](https://github.com/zalo/mujoco_wasm#), which already handles 3D visualization. The 55-hour task involves:
-- A communication channel between the Brax training process and the web server.
+- A communication channel (WebSocket) between the Brax training process and the web server.
 - Detailed install doc for community user
 - (Optional) A cache mechanism for web.
 
