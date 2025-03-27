@@ -65,9 +65,9 @@ Since JAX and MuJoCo XLA (MJX) are designed for accelerators, keeping computatio
 
 - **Relevant Experience**:  
   - Robotics Engineer Intern
-  - Software Developer 
+  - Software Developer Full-time
   - Robotics Research Assistant
-  - Reinforcement Learning course project using OpenAI/Gym
+  - Reinforcement Learning course project (from scratch) using OpenAI/Gym
 
 ### GSoC Participation details
 

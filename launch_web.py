@@ -1,55 +1,50 @@
 import mujoco
-import time
-import numpy as np
-from mujoco import viewer
-import config
 import xml.etree.ElementTree as ET
+import config
 
+import http.server
+import socketserver
 import os
-import pickle
-import jax.numpy as jnp
 
-def save_model(model_state, filename):
-    """Saves the trained model state to a file."""
-    with open(filename, 'wb') as f:
-        pickle.dump(model_state, f)
-    print(f"Model saved to {filename}")
-
-def load_model(filename):
-    """Loads a trained model state from a file."""
-    if not os.path.exists(filename):
-        raise FileNotFoundError(f"Model file {filename} not found.")
-    with open(filename, 'rb') as f:
-        model_state = pickle.load(f)
-    print(f"Model loaded from {filename}")
-    return model_state
-
-def evaluate_policy(env, model_state, num_episodes=10):
-    """Evaluates the trained policy on the given environment."""
-    total_rewards = []
-    for episode in range(num_episodes):
-        state = env.reset()
-        done = False
-        episode_reward = 0
-        while not done:
-            action = model_state.policy(state.obs)  # Get action from policy
-            state = env.step(action)
-            episode_reward += state.reward
-            done = state.done
-        total_rewards.append(episode_reward)
-    avg_reward = jnp.mean(jnp.array(total_rewards))
-    print(f"Average reward over {num_episodes} episodes: {avg_reward}")
-    return avg_reward
-
-def create_multi_robot_env(num_envs, env_separation, envs_per_row, model_path):
+def start_web_server(directory_path, port=8000):
     """
-    Creates a multi-environment MuJoCo model by replicating a robot across `num_envs` independent spaces.
+    Starts a simple HTTP web server to serve files from the specified directory.
+    
+    Args:
+        directory_path (str): The path to the directory to serve files from.
+        port (int): The port number to run the server on (default is 8000).
+    """
+    # Change to the specified directory
+    if not os.path.isdir(directory_path):
+        raise ValueError(f"Directory '{directory_path}' does not exist.")
+    os.chdir(directory_path)
+    
+    # Set up the HTTP server
+    Handler = http.server.SimpleHTTPRequestHandler
+    httpd = socketserver.TCPServer(("", port), Handler)
+    
+    # Print server details
+    print(f"Serving HTTP on http://localhost:{port} from directory: {os.path.abspath(directory_path)}")
+    print("Press Ctrl+C to stop the server.")
+    
+    # Start the server
+    try:
+        httpd.serve_forever()
+    except KeyboardInterrupt:
+        print("\nServer stopped.")
+        httpd.server_close()
+
+def create_multi_robot_env(num_envs, env_separation, envs_per_row, model_path, output_path):
+    """
+    Creates a multi-environment MuJoCo model by replicating a robot across `num_envs` independent spaces
+    and saves the modified XML to a file.
     
     Args:
         num_envs (int): Number of independent environments.
         env_separation (float): Distance between environments.
         envs_per_row (int): Number of environments per row.
         model_path (str): Path to the MuJoCo XML model file.
+        output_path (str): Path where the modified XML will be saved. Defaults to "multi_robot_env.xml".
     
     Returns:
         mujoco.MjModel: The compiled MuJoCo model.
@@ -104,40 +99,28 @@ def create_multi_robot_env(num_envs, env_separation, envs_per_row, model_path):
                 
                 actuator_root.append(new_actuator)
     
-    # Convert modified XML to string and load into MuJoCo
-    xml_string = ET.tostring(root, encoding='unicode')
+    # Save the modified XML to a file
+    xml_string = ET.tostring(root, encoding='unicode', method='xml')
+    with open(output_path, 'w') as f:
+        f.write('<?xml version="1.0" encoding="UTF-8"?>\n')  # Add XML declaration
+        f.write(xml_string)
+    
+    # Create and return MuJoCo model and data
     model = mujoco.MjModel.from_xml_string(xml_string)
     data = mujoco.MjData(model)
     return model, data
 
-def main():
-    """Runs the multi-environment simulation."""
-    # Create the environment
-    m, d = create_multi_robot_env(
+if __name__ == "__main__":
+    # Create the multi-robot MuJoCo environment
+    model, data = create_multi_robot_env(
         config.NUM_ENVS,
         config.ENV_SEPARATION,
         config.ENVS_PER_ROW,
-        config.MODEL_PATH
+        config.MODEL_PATH,
+        "wasm/examples/scenes/multi_ants.xml"
     )
-    
-    # Determine the number of controls per robot dynamically
-    controls_per_robot = m.nu // config.NUM_ENVS
-    total_controls = config.NUM_ENVS * controls_per_robot
-    
-    with viewer.launch_passive(m, d) as v:
-        mujoco.mj_resetData(m, d)
-        t0 = time.time()
-        
-        while time.time() - t0 < config.DURATION:
-            # Apply random controls
-            d.ctrl[:] = np.random.uniform(*config.CONTROL_RANGE, size=(config.NUM_ENVS, controls_per_robot)).flatten()
-            mujoco.mj_step(m, d)
-            v.sync()
-            time.sleep(1/config.FRAMERATE)
-        
-        while v.is_running():
-            v.sync()
-            time.sleep(1/60)
 
-if __name__ == "__main__":
-    main()
+
+    # Specify the path where your files (e.g., XML) are located
+    path_to_serve = "wasm"  # Replace with your actual path
+    start_web_server(path_to_serve, port=8000)

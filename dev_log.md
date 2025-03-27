@@ -1,0 +1,1 @@
+tested on `./emsdk install 3.1.50`, the newest version encounter cmake error
