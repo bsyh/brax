@@ -51,6 +51,9 @@ Since JAX and MuJoCo XLA (MJX) are designed for accelerators. The tool will peri
 - Maintain GPU training speed by reducing data trasnfer frequency.
 - Let CPU handdle visualization tasks without blocking GPU.
 
+#### How data is transfered between GPU and CPU? How to implement on/off toggle?
+`x_on_gpu = jax.device_put(x, device="GPU")` sends x to a GPU, and `x_on_gpu.block_until_ready()` retrieves the data from GPU to host when a computation is done. We may want to call a minimun number of `block_until_ready()` for visualization purpose only when "is_render==True". The visulziation UI and handler needs run in another thread so not to block main computation.
+
 #### Why Web UI?
 A web-based UI enables visualization on headless training machines or remote access, providing flexibility for researchers to monitor policies from any device with a browser. Using MuJoCo-WASM simplifies deployment and enhances accessibility.
 > Try web UI in [web](https://github.com/bsyh/brax/tree/web) branch
