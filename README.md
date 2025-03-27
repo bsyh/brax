@@ -52,7 +52,7 @@ Since JAX and MuJoCo XLA (MJX) are designed for accelerators. The tool will peri
 - Let CPU handdle visualization tasks without blocking GPU.
 
 #### Why Web UI?
-A web-based UI enables visualization on headless training machines or remote access, providing flexibility for researchers to monitor policies from any device with a browser. Using MuJoCo-WASM simplifies deployment and enhances accessibility.\
+A web-based UI enables visualization on headless training machines or remote access, providing flexibility for researchers to monitor policies from any device with a browser. Using MuJoCo-WASM simplifies deployment and enhances accessibility.
 > Try web UI in [web](https://github.com/bsyh/brax/tree/web) branch
 
 #### Web Version Details
