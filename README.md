@@ -55,11 +55,13 @@ Since JAX and MuJoCo XLA (MJX) are designed for accelerators. The tool will peri
 A web-based UI enables visualization on headless training machines or remote access, providing flexibility for researchers to monitor policies from any device with a browser. Using MuJoCo-WASM simplifies deployment and enhances accessibility.
 > Try web UI in [web](https://github.com/bsyh/brax/tree/web) branch
 
-#### Web Version Details
+#### Web Version Future Workload
 The web version leverages [MuJoCo-WASM](https://github.com/zalo/mujoco_wasm#), which already handles 3D visualization. The 55-hour task involves:
-- A communication channel (WebSocket) between the Brax training process and the web server.
+- Python script that display training content by default
+- A button that turn on/off receiving data from training server
+- A communication channel (WebSocket) between the Brax training process and the web server
 - Detailed install doc for community user
-- (Optional) A cache mechanism for web.
+- (Optional) A cache mechanism for web
 
 ---
 
