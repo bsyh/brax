@@ -1,5 +1,12 @@
 # Revised Proposal to Google Summer of Code 2025  
 **[PAL Robotics: Brax Training Viewer for Real-Time Policy Visualization](https://pal-robotics.com/2025-google-summer-code-proposals/)**\
+<a href="https://discord.com/invite/qx6zvXPA?utm_source=Discord%20Widget&utm_medium=Connect">
+        <img src="https://img.shields.io/discord/1346908192655020204?logo=discord&logoColor=white"
+            alt="Chat on Discord"></a> 
+![GitHub last commit](https://img.shields.io/github/last-commit/bsyh/brax)
+![GitHub contributors](https://img.shields.io/github/contributors/bsyh/brax)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/t/bsyh/brax)
+\
 Mujoco.viewer
 ![Mujoco.viewer demo](https://github.com/bsyh/brax/blob/main/doc/random.gif?raw=true)
 Web UI
