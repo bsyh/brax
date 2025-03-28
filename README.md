@@ -77,7 +77,7 @@ The web version leverages [MuJoCo-WASM](https://github.com/zalo/mujoco_wasm#), w
 
 ## Contributor's Background
 - **Programming Skills**:  
-  - 2 years of professional Python experience.  
+  - 2 years of professional software development experience.  
   - Proficient in MuJoCo simulator, XML, RL training algorithms (PPO), Brax, and JAX.  
   - Experience with scikit-learn, PyTorch, and TensorFlow.  
   - Familiarity with cloud and embedded Linux environments.  
