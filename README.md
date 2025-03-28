@@ -1,4 +1,4 @@
-# Revised Proposal to Google Summer of Code 2025  
+# Proposal to Google Summer of Code 2025  
 **[PAL Robotics: Brax Training Viewer for Real-Time Policy Visualization](https://pal-robotics.com/2025-google-summer-code-proposals/)**\
 <a href="https://discord.com/invite/qx6zvXPA?utm_source=Discord%20Widget&utm_medium=Connect">
         <img src="https://img.shields.io/discord/1346908192655020204?logo=discord&logoColor=white"
