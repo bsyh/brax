@@ -39,13 +39,13 @@ The project focuses on implementing visualization in the MuJoCo XLA (MJX) pipeli
 
 | **Hours** | **Task**                                                                 |
 |-----------|--------------------------------------------------------------------------|
-| 24        | Familiarize with source code of JAX/Brax/MuJoCo                          |
+| 10        | Familiarize with source code of JAX/Brax/MuJoCo                          |
 | 12        | Investigate UI solutions and write design doc                           |
 | 30        | Customize `mujoco.viewer` for policy UI: Add overlays (reward/epoch), real-time plotting |
 | 20        | Develop basic workflow with dummy policy training                       |
-| 44        | Implement synchronized MuJoCo visualization with Brax training          |
+| 51        | Implement synchronized MuJoCo visualization with Brax training          |
 | 20        | Unit tests and validation: Ensure policy actions match visuals          |
-| 50        | Support for parallel environments: Visualize multiple agents, enable agent selection |
+| 57        | Support for parallel environments: Visualize multiple agents, enable agent selection |
 | 20        | Implement rendering toggle: Pause visualization when disabled           |
 | 30        | Large-scale testing: Unit tests, validation, and performance comparison |
 | 5        | Refine UI: Polish visuals and improve responsiveness                    |
